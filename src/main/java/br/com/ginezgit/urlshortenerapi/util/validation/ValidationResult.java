@@ -3,7 +3,6 @@ package br.com.ginezgit.urlshortenerapi.util.validation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import br.com.ginezgit.urlshortenerapi.exception.InvalidParameter;
 

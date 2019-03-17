@@ -34,17 +34,7 @@ public class ShortenedUrlIdRange {
 		this.lastModified = lastModified;
 	}
 	
-	public ShortenedUrlIdRange(Integer rangeId, Integer firstId, Integer lastId, String owner, Integer currentId,
-			Date lastModified) {
-		super();
-		this.rangeId = rangeId;
-		this.firstId = firstId;
-		this.lastId = lastId;
-		this.owner = owner;
-		this.currentId = currentId;
-		this.lastModified = lastModified;
-	}
-
+	
 	public int nextId() {
 		return this.currentId++;
 	}

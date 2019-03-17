@@ -25,7 +25,7 @@ public class Base10ConverterTest {
 	
 	
     @Test
-    public void convertToBase16() {
+    public void Should_ConvertBase10ToBase16_When_ConvertingDecimalInt() {
     	Assert.assertEquals(BASE_16_NUMBER_0, Base10Converter.convert(BASE_10_NUMBER_0, BASE_16));
     	Assert.assertEquals(BASE_16_NUMBER_256, Base10Converter.convert(BASE_10_NUMBER_256, BASE_16));
     	Assert.assertEquals(BASE_16_NUMBER_512, Base10Converter.convert(BASE_10_NUMBER_512, BASE_16));
@@ -33,7 +33,7 @@ public class Base10ConverterTest {
     }
     
     @Test
-    public void convertToBase61() {
+    public void Should_ConvertBase10ToBase61_When_ConvertingDecimalInt() {
     	Assert.assertEquals(BASE_62_NUMBER_0, Base10Converter.convert(BASE_10_NUMBER_0, BASE_62));
     	Assert.assertEquals(BASE_62_NUMBER_256, Base10Converter.convert(BASE_10_NUMBER_256, BASE_62));
     	Assert.assertEquals(BASE_62_NUMBER_512, Base10Converter.convert(BASE_10_NUMBER_512, BASE_62));

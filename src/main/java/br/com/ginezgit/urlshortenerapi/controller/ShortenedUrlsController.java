@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ginezgit.urlshortenerapi.exception.InvalidRestRequestParameterException;
 import br.com.ginezgit.urlshortenerapi.model.rest.GetShortenedUrlRequestDto;
 import br.com.ginezgit.urlshortenerapi.model.rest.ShortenedUrlDto;
-import br.com.ginezgit.urlshortenerapi.service.ShortenedUrlsService;
-import br.com.ginezgit.urlshortenerapi.util.validation.NotNullValidator;
+import br.com.ginezgit.urlshortenerapi.service.UrlsService;
 import br.com.ginezgit.urlshortenerapi.util.validation.ShortenedUrlIdValidator;
 import br.com.ginezgit.urlshortenerapi.util.validation.UrlValidator;
 
 @RestController
 public class ShortenedUrlsController {
 
+	private static final String REST_DOMAIN = "/v1/";
 	private static final String SHORTENED_URL_ABBREVIATION = "shu";
-	private static final String REST_DIRECTORY = "/" + SHORTENED_URL_ABBREVIATION + "/";
+	public static final String REST_DIRECTORY = REST_DOMAIN + SHORTENED_URL_ABBREVIATION;
 
 	@Autowired
-	private ShortenedUrlsService shortenedUrlsService;
+	private UrlsService shortenedUrlsService;
 
 	/*@RequestMapping(value = REST_DIRECTORY + "/{id}/data", method = RequestMethod.GET)
 	public ResponseEntity<?> getOriginalUrl(@PathVariable(value = "id", required = true) String shortenedUrlId) {

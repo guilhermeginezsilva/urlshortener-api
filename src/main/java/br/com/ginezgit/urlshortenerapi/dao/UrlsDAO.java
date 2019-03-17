@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import br.com.ginezgit.urlshortenerapi.model.db.Url;
 
 @Repository
-public interface ShortenedUrlsDAO extends CrudRepository<Url, String>{
+public interface UrlsDAO extends CrudRepository<Url, String>{
 
 	 @Query("SELECT url FROM Url url WHERE url.originalUrl=:originalUrl")
 	 List<Url> findAllByOriginalUrl(@Param("originalUrl") String originalUrl, Pageable pageable);

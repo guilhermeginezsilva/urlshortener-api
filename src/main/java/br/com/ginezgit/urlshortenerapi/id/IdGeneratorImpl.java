@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import br.com.ginezgit.urlshortenerapi.exception.IdGenerationException;
 import br.com.ginezgit.urlshortenerapi.model.db.ShortenedUrlIdRange;
 import br.com.ginezgit.urlshortenerapi.service.ShortenedUrlIdRangeService;
 import br.com.ginezgit.urlshortenerapi.util.Base10Converter;
@@ -34,7 +33,7 @@ public class IdGeneratorImpl implements IdGenerator {
 	}
 	
 	@Override
-	public GeneratedId getNewId() throws IdGenerationException {
+	public GeneratedId getNewId() {
 		synchronized (idRange) {
 			int newId = getNewIdCounter();
 			if(this.idRange.hasEnded()) {
@@ -50,7 +49,7 @@ public class IdGeneratorImpl implements IdGenerator {
 		return newId;
 	}
 	
-	private synchronized String getIdOnBase62(int newId) throws IdGenerationException {
+	private synchronized String getIdOnBase62(int newId) {
 		synchronized (idRange) {
 			return addPadding(Base10Converter.convert(newId, 62));
 		}

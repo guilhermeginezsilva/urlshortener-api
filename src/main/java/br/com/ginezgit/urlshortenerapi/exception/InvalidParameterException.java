@@ -54,19 +54,19 @@ public class InvalidParameterException extends RuntimeException {
 	}
 	
 	@Override
-		public String toString() {
-		
-			StringBuilder toString = new StringBuilder("Invalid Parameters:\n");
-			toString.append(
-					this.invalidParameters.stream().collect(StringBuilder::new,
-					(parameterMessage, element) -> {
-						parameterMessage.append("'").append(element.getParameter()).append("': ").append(element.getMessage()).append("\n");
-					},
-					(accumulatedParametersMessages, parameterMessage) -> {})
-					.toString()
-					);
-			 
-			 return toString.toString();
-		}
+	public String toString() {
+	
+		StringBuilder toString = new StringBuilder("Invalid Parameters:\n");
+		toString.append(
+				this.invalidParameters.stream().collect(StringBuilder::new,
+				(parameterMessage, element) -> {
+					parameterMessage.append("'").append(element.getParameter()).append("': ").append(element.getMessage()).append("\n");
+				},
+				(accumulatedParametersMessages, parameterMessage) -> {})
+				.toString()
+				);
+		 
+		 return toString.toString();
+	}
 
 }

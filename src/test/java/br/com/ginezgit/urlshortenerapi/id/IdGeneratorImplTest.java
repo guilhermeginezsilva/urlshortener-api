@@ -19,7 +19,7 @@ public class IdGeneratorImplTest {
 	private IdGenerator idGenerator;
 	
 	@Test
-    public void newIdGeneration() {
+    public void Should_GenerateIdSequence_Always() {
     	for(int i= 0; i < 100; i++) {
     		Assert.assertEquals(zeroTo100IdsBase62[i],idGenerator.getNewId().getGeneratedId());
     	}

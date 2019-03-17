@@ -11,6 +11,7 @@ public class ShortenedUrlIdValidator implements Validator<String> {
 		if (id == null || id.isEmpty()) {
 			validationResult
 					.addInvalidParameter(new InvalidParameter(parameterName, "Shortened Url Id mustn't be null or empty"));
+			return validationResult;
 		}
 		if (!id.matches("[0-9|a-z|A-Z]*")) {
 			validationResult.addInvalidParameter(new InvalidParameter(parameterName, "Shortened Url Id has invalid characters"));
