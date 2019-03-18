@@ -27,12 +27,6 @@ public class ShortenedUrlsController {
 	@Autowired
 	private UrlsService shortenedUrlsService;
 
-	/*@RequestMapping(value = REST_DIRECTORY + "/{id}/data", method = RequestMethod.GET)
-	public ResponseEntity<?> getOriginalUrl(@PathVariable(value = "id", required = true) String shortenedUrlId) {
-		ShortenedUrlDto shortenedUrl = shortenedUrlsService.getOriginalUrl(shortenedUrlId);
-		return new ResponseEntity<>(shortenedUrl, HttpStatus.OK);
-	}*/
-	
 	@RequestMapping(value = REST_DIRECTORY + "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> redirectToOriginalUrl(
 		@PathVariable(value = "id")

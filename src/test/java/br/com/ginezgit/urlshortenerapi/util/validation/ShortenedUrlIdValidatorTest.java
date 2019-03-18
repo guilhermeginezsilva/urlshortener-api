@@ -5,24 +5,30 @@ import org.junit.Test;
 
 public class ShortenedUrlIdValidatorTest {
 
-	String validId = "0123456";
-	String validId2 = "0000789";
-	String validId3 = "abcdefg";
-	String validId4 = "hijklmn";
-	String validId5 = "opqrstu";
-	String validId6 = "00vwxyz";
-	String validId7 = "ABCDEFG";
-	String validId8 = "HIJKLMN";
-	String validId9 = "OPQRSTU";
-	String validId10 = "00VWXYZ";
 	
-	String invalidCharactersId = "000@000";
+	
+	String validId = "01234";
+	String validId2 = "56789";
+	String validId3 = "abcde";
+	String validId4 = "fghij";
+	String validId5 = "klmno";
+	String validId6 = "pqrst";
+	String validId7 = "uvwxy";
+	String validId8 = "0000z";
+	String validId9 = "ABCDE";
+	String validId10 = "FGHIJ";
+	String validId11 = "KLMNO";
+	String validId12 = "PQRST";
+	String validId13 = "UVWXY";
+	String validId14 = "0000Z";
+	
+	String invalidCharactersId = "000@0";
 	
 	String nullId = null;
 	String emptyId = "";
 	
-	String ShorterId = "000000";
-	String LongerId = "00000000";
+	String ShorterId = "0000";
+	String LongerId = "000000";
 	
 	String invalidId2Reasons = "@#$%";
 	
@@ -39,6 +45,10 @@ public class ShortenedUrlIdValidatorTest {
 		Assert.assertFalse(ShortenedUrlIdValidator.doValidation("id", validId8).isInvalid());
 		Assert.assertFalse(ShortenedUrlIdValidator.doValidation("id", validId9).isInvalid());
 		Assert.assertFalse(ShortenedUrlIdValidator.doValidation("id", validId10).isInvalid());
+		Assert.assertFalse(ShortenedUrlIdValidator.doValidation("id", validId11).isInvalid());
+		Assert.assertFalse(ShortenedUrlIdValidator.doValidation("id", validId12).isInvalid());
+		Assert.assertFalse(ShortenedUrlIdValidator.doValidation("id", validId13).isInvalid());
+		Assert.assertFalse(ShortenedUrlIdValidator.doValidation("id", validId14).isInvalid());
 	}
 	
 	@Test

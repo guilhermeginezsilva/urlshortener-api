@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import br.com.ginezgit.urlshortenerapi.exception.OriginalUrlNotFoundException;
+import br.com.ginezgit.urlshortenerapi.id.IdGeneratorImpl;
 import br.com.ginezgit.urlshortenerapi.model.rest.ShortenedUrlDto;
 import br.com.ginezgit.urlshortenerapi.service.UrlsService;
 import br.com.ginezgit.urlshortenerapi.util.StringUtils;
@@ -38,7 +39,7 @@ public class ShortenedUrlsControllerRedirectToOriginalUrlTest {
     private UrlsService shortenedUrlsService;
 	
     private ShortenedUrlDto mockedShortenedUrl;
-    private String mockedShortenedUrlId="0000000";
+    private String mockedShortenedUrlId="00000";
     
     @Before
     public void prepareTest() {
@@ -92,7 +93,7 @@ public class ShortenedUrlsControllerRedirectToOriginalUrlTest {
 		
 		for(int i =ASCII_SYMBOLS_START; i<= ASCII_SYMBOLS_END; i++) {
 			Character asciiChar = (char) i;
-			String generatedId = StringUtils.padding("", 7, asciiChar, Side.LEFT);
+			String generatedId = StringUtils.padding("", IdGeneratorImpl.DEFAULT_ID_LENGTH, asciiChar, Side.LEFT);
 			
 			if(asciiChar.toString().matches("[0-9|A-Z|a-z]*")) {
 				given(shortenedUrlsService.getOriginalUrl(generatedId)).willReturn(this.mockedShortenedUrl);

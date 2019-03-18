@@ -20,7 +20,7 @@ public class IdGeneratorImpl implements IdGenerator {
 	private ShortenedUrlIdRangeService shortenedUrlIdRangeService;
 	private ShortenedUrlIdRange idRange;
 	
-	public static final int DEFAULT_ID_LENGTH = 7;
+	public static final int DEFAULT_ID_LENGTH = 5;
 	public static final char DEFAULT_ID_PADDING_CHAR = '0';
 	
 	@PostConstruct

@@ -1,0 +1,1 @@
+java -jar urlshortener-api-1.0.0.jar

@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "URL Shortener",
+		"_postman_id": "45c43fbc-51ca-b529-3081-8b537e2b5a6e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Shortened Url",
+			"request": {
+				"url": "http://localhost:8080/v1/shu/00000",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Shorten URL",
+			"request": {
+				"url": "http://localhost:8080/v1/shu/shorten",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"url\": \"http://www.google.com.br\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,6 +1,7 @@
 package br.com.ginezgit.urlshortenerapi.util.validation;
 
 import br.com.ginezgit.urlshortenerapi.exception.InvalidParameter;
+import br.com.ginezgit.urlshortenerapi.id.IdGeneratorImpl;
 
 public class ShortenedUrlIdValidator implements Validator<String> {
 
@@ -16,9 +17,9 @@ public class ShortenedUrlIdValidator implements Validator<String> {
 		if (!id.matches("[0-9|a-z|A-Z]*")) {
 			validationResult.addInvalidParameter(new InvalidParameter(parameterName, "Shortened Url Id has invalid characters"));
 		}
-		if (id.length() != 7) {
+		if (id.length() != IdGeneratorImpl.DEFAULT_ID_LENGTH) {
 			validationResult.addInvalidParameter(
-					new InvalidParameter(parameterName, "Shortened Url Id must have a length of 7 characters"));
+					new InvalidParameter(parameterName, "Shortened Url Id must have a length of " + IdGeneratorImpl.DEFAULT_ID_LENGTH + " characters"));
 		}
 
 		return validationResult;
