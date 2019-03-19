@@ -59,7 +59,6 @@ public class ShortenedUrlIdRangeService {
 		return new ShortenedUrlIdRange(0, this.rangeSize-1, this.applicationId, 0, new Date());
 	}
 	
-	@Transactional
 	public void updateRange(ShortenedUrlIdRange shortenedUrlIdRange) {
 		shortenedUrlIdRange.setLastModified(new Date());
 		shortenedUrlIdRangeDAO.save(shortenedUrlIdRange);

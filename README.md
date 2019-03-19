@@ -168,17 +168,33 @@ The available routes are (considering you are running in your localhost):
 		
 **ID Generation Process:**
 
-* Format:
+1. **Format:**
 The id generation process is a simple sequence of decimal values, starting at 0; every time that a ID is generated, it increases the counter by 1.
 
 To transform this decimal ID in the Shortened URL ID the API calculates the base 62 of this number using the characters: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l','m', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'.
 
 To generate a fixed 5 characters ID, after the base 62 transformation, it pad zeroes to the left.
 
-* Design:
-It was designed to have 5 characters length because it would be able to support 916.132.832 shortened URLs generated, that is a big number of shortened URLs and can be handled by a int variable. If the application really get used by a lot of people and systems and this starts to be a problem, the conversion for a long variable is not complicated.
+**Design:**
+It was designed to have 5 characters length because it would be able to support 916.132.832 shortened URLs generated, that is a big number of shortened URLs and can be handled by a int variable. If the application really get used by a lot of people and systems and this starts to be a problem, the conversion for a long variable is possible.
 
-* ID Generation Process:
+2. **ID Generation Process:**
+The ID generation process was designed to work on a multi application instances environment working with a unique database interface. It works as below:
 
+**Design:**
+
+One or more instances need to generate IDs for the shortened URLs, but if each one generates an ID it would be possible to generate duplicate IDs. I could give each instance a fixed range of IDs to work, but it would be a problem for an auto scaling solution, because I would need to know all my instances ranges to deal with it. So the solution was an hybrid of it.
+
+Instead of generating an ID, the application instances generates Ranges of IDs, this is done by inserting a new Range on the ShortenedUrlIdRange table. This insertion must be synchronized by all instances, so it avoids that two or more instances creates the same range in the database, so all the application instances needs to be connecting to the same database, or same database interface.
+
+In this transaction the application process check the last range existing in the database, if there are none, it creates the first range, else it creates a range starting from the ((lastID from the Last Existing Range) +1 ). 
+
+I decided to use ranges here also because I don't want a synchronized insert for every request the application receives, so the creation of a new Range is done in a transaction, but the update no. Taking into account that there is just one application instance working with each range. So as it receives a big range to work, it just need to update the range position in the range record. Off course you could also just update the record when the range has ended, it would improve even more the performance, but if the application stops in the middle of the range, it would lose the current position and would replace all the range records created when receiving new requests.
+
+3. **Responsabilities:**
+
+* **Application:** is responsible to make the database calls of creation of a new range in a transaction.
+
+* **Database:** is responsible to keep all the IDs range records, if it needs to scale, it would need to be scaled vertically. If it would be scaled horizontally a replication of this table between the database instances would be necessary.
 
 
