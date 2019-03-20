@@ -85,7 +85,7 @@ Well, running the tests you can check that the application is working correctly,
     
 * you can access the AWS deployed test application and the server:
 
-Site: d1w2hz6cl3vqn1.cloudfront.net
+Site: http://d1w2hz6cl3vqn1.cloudfront.net
 
 Server routes:
 * http://shortener-env.k6wamyyvfj.us-east-1.elasticbeanstalk.com/v1/shu/shorten
