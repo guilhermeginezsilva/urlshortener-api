@@ -85,9 +85,9 @@ public class ShortenedUrlsControllerGetShortenedUrlTest {
 			"teste",
 			"teste.",
 			".teste",
-			"http://www",
-			"http://www.",
-			"http://www.g"
+			"www",
+			"www.",
+			"www.g"
 		);
 		
 		for(String url: invalidTestUrls) {

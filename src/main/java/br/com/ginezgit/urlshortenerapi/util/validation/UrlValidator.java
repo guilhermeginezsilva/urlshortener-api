@@ -17,7 +17,7 @@ public class UrlValidator implements Validator<String> {
 		
 		
 		
-		if (!url.matches("^[0-9|a-z|A-Z|\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,]*?\\:\\/\\/[0-9|a-z|A-Z|\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,]*?\\.[0-9|a-z|A-Z|\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,]{2}[0-9|a-z|A-Z|\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,]*")
+		if (!url.matches("^[0-9|a-z|A-Z|\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,]*?\\:\\/\\/.*")
 		) {
 			validationResult.addInvalidParameter(new InvalidParameter(parameterName, "Url has an invalid format"));
 		}
