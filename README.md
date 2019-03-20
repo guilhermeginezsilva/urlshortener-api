@@ -1,4 +1,4 @@
-# Url Shortener REST API (Basic Version)
+# Url Shortener REST API (AWS Version)
 
 **Challenge:** Design and implement a RESTful API for a URL shortener.
 
@@ -9,7 +9,15 @@
 
 3. The API should persist the data, because if the application is stopped, it must recover all the data when it starts again.
 
+4. The project must be available in the cloud
+
+5. The project must be built and deployed with docker compose to the cloud with multiple instances balanced by a load balancer. **I haven't used docker, as I'm still studing it, so I've just deployed it to AWS with beanstalk and using AWS load balancer on 2 instances.**
+
 #### Prerequisites
+
+This version of this project is designed to run locally and in a cloud platform. All the steps below are dedicated to run the application locally, but you can try out an deployed version of this application in AWS using the server:
+
+http://shortener-env.k6wamyyvfj.us-east-1.elasticbeanstalk.com
 
 To run this project you need to have the following applications:
 
@@ -65,7 +73,7 @@ There are 2 options to run this project:
     ./start.sh
     
 ### It's Running!! And now?
-Well, running the tests you can check that the application is working correctly, but we know that there isn't nothing better than having some fun with these projects:
+Well, running the tests you can check that the application is working correctly, but we know that there isn't nothing better than having some fun with these projects, so I have prepared two ways of doing it:
 
 * You can use Postman application; a script ("URL Shortener.postman_collection.json") with the request structures is available also in the releases directory, just import in your postman application and have fun;
 
@@ -74,6 +82,16 @@ Well, running the tests you can check that the application is working correctly,
     https://www.getpostman.com/
     
     ###After download, you may find a "import" button in the top of the screen. Just import the script and you will be available to make the requests.
+    
+* you can access the AWS deployed test application and the server:
+
+Site: d1w2hz6cl3vqn1.cloudfront.net
+
+Server routes:
+* http://shortener-env.k6wamyyvfj.us-east-1.elasticbeanstalk.com/v1/shu/shorten
+* http://shortener-env.k6wamyyvfj.us-east-1.elasticbeanstalk.com/v1/shu/00000
+
+
     
 ### Project Design:
 Here I explain the design decisions of this project:
